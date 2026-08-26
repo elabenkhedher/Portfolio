@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const socials = [
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
+  { label: "GitHub", href: "https://github.com/elabenkhedher" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ela-ben-khedher-949a26239/" },
 ];
 
 const EmailSection = () => {
@@ -32,9 +32,16 @@ const EmailSection = () => {
 
     try {
       const response = await fetch(endpoint, options);
-      if (response.status === 200) {
+      const resData = await response.json();
+      if (response.ok && !resData.error) {
         setEmailSubmitted(true);
+      } else {
+        const errorMsg = typeof resData.error === "object" ? (resData.error.message || JSON.stringify(resData.error)) : resData.error;
+        alert(`Error sending message: ${errorMsg || "Unknown error"}`);
       }
+    } catch (error) {
+      console.error("Submit error:", error);
+      alert("Failed to send message. Please try again.");
     } finally {
       setIsSending(false);
     }
@@ -75,10 +82,10 @@ const EmailSection = () => {
               within a day or two.
             </p>
             <a
-              href="mailto:hello@elaa.dev"
+              href="mailto:elabenkedher@gmail.com"
               className="mt-6 inline-block border-b border-line-strong pb-1 text-lg text-paper transition-colors hover:border-blush hover:text-blush"
             >
-              hello@elaa.dev
+              elabenkedher@gmail.com
             </a>
             <div className="mt-10 flex gap-6">
               {socials.map((social) => (

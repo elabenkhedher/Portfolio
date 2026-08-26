@@ -58,14 +58,6 @@ const ProjectCard = ({ index, title, description, stack, image, gitUrl, previewU
             >
               Code
             </a>
-            <a
-              href={previewUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs uppercase tracking-widest text-paper-dim transition-colors hover:text-blush"
-            >
-              Live <span aria-hidden="true">↗</span>
-            </a>
           </div>
         </div>
       </div>
