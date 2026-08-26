@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="This Website preview">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#f2a7c6" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#f2a7c6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="#1a151d"/>
+  <g stroke="#2c2430" stroke-width="1">
+    <path d="M80 0V500M160 0V500M240 0V500M320 0V500M400 0V500M480 0V500M560 0V500M640 0V500M720 0V500"/>
+  </g>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <circle cx="400" cy="225" r="112" fill="#221a25" stroke="#46394d" stroke-width="1.5"/>
+  <text x="400" y="225" font-size="100" text-anchor="middle" dominant-baseline="central">🌸</text>
+  <text x="400" y="408" font-family="'Courier New', monospace" font-size="19" letter-spacing="6" fill="#d97ba6" text-anchor="middle">FIG. 06 — YOU ARE HERE</text>
+  <text x="52" y="66" font-size="22" fill="#f2a7c6">✦</text>
+  <text x="736" y="446" font-size="18" fill="#f7c9db">♡</text>
+</svg>
