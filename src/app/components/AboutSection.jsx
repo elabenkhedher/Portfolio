@@ -8,12 +8,18 @@ const details = [
     items: [
       "Node.js",
       "React",
+      "Next.js",
+      "PHP",
       "Angular",
       "Java / JEE",
       "Python",
       "SQL",
       "MongoDB",
       "Tailwind CSS",
+      "Kotlin",
+      "Django",
+      "Flutter",
+      "Symfony"
     ],
   },
   {
@@ -48,7 +54,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <p className="text-lg leading-relaxed text-paper-dim">
-              I am a full-stack developer from Kelibia, Tunisia. I got into
+              I am a full-stack developer from Dar chaabene, Tunisia. I got into
               programming at ISET Kelibia and stuck with the parts I like
               most: building interfaces that feel right, and writing the
               backend that keeps them honest.
