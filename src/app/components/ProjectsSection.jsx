@@ -26,8 +26,8 @@ const ProjectsSection = () => {
         <div className="mb-4 flex flex-wrap items-baseline justify-between gap-4">
           <div className="flex items-baseline gap-4">
             <span className="font-mono text-xs text-blush">02</span>
-            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
-              Selected work{" "}
+            <h2 className="text-3xl font-medium tracking-tight text-paper sm:text-4xl">
+              Projets sélectionnés{" "}
               <span className="text-blush" aria-hidden="true">
                 ✦
               </span>

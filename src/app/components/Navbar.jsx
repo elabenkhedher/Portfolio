@@ -3,11 +3,12 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
 import ScrollProgress from "./ScrollProgress";
+import CvModal from "./CvModal";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { title: "Work", path: "#work", id: "work" },
-  { title: "About", path: "#about", id: "about" },
+  { title: "Projets", path: "#work", id: "work" },
+  { title: "À propos", path: "#about", id: "about" },
   { title: "Contact", path: "#contact", id: "contact" },
 ];
 
@@ -15,6 +16,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const [isCvOpen, setIsCvOpen] = useState(false);
 
   // Scrollspy & navbar border appearance on scroll
   useEffect(() => {
@@ -138,7 +140,19 @@ const Navbar = () => {
               })}
             </ul>
 
-            <div className="flex items-center gap-4 border-l border-line pl-6">
+            <div className="flex items-center gap-3 border-l border-line pl-6">
+              {/* CV Button */}
+              <button
+                type="button"
+                onClick={() => setIsCvOpen(true)}
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-line-strong bg-ink px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-paper transition-all duration-200 hover:border-blush hover:text-blush focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
+              >
+                <span>CV</span>
+                <span className="rounded bg-blush/15 px-1 py-0.5 text-[10px] text-blush">
+                  PDF
+                </span>
+              </button>
+
               <ThemeToggle />
 
               <a
@@ -150,13 +164,22 @@ const Navbar = () => {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blush opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-blush" />
                 </span>
-                <span>Available for work</span>
+                <span>Stage PFE (Fév 2027)</span>
               </a>
             </div>
           </div>
 
           {/* Mobile Right Controls: Theme Toggle & Hamburger */}
           <div className="flex items-center gap-2 md:hidden">
+            <button
+              type="button"
+              onClick={() => setIsCvOpen(true)}
+              className="flex h-11 items-center gap-1 rounded-lg border border-line-strong bg-ink px-2.5 font-mono text-xs uppercase text-paper hover:border-blush hover:text-blush"
+            >
+              <span>CV</span>
+              <span className="text-[10px] text-blush">PDF</span>
+            </button>
+
             <ThemeToggle />
 
             <button
@@ -219,7 +242,18 @@ const Navbar = () => {
                 })}
               </ul>
 
-              <div className="mt-6 flex flex-col gap-4 border-t border-line pt-6">
+              <div className="mt-6 flex flex-col gap-3 border-t border-line pt-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setIsCvOpen(true);
+                  }}
+                  className="flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-blush/60 bg-blush/10 px-4 py-3 font-mono text-xs uppercase tracking-widest text-blush transition-colors hover:bg-blush/20"
+                >
+                  Consulter mon CV (PDF) 📄
+                </button>
+
                 <a
                   href="#contact"
                   onClick={(e) => handleNavClick(e, "contact")}
@@ -229,16 +263,19 @@ const Navbar = () => {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink opacity-75" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-ink" />
                   </span>
-                  Available for work
+                  Disponible Stage PFE (Fév 2027)
                 </a>
                 <p className="font-mono text-center text-xs uppercase tracking-widest text-paper-faint">
-                  Kelibia, Tunisia<span className="text-blush">.</span>
+                  Nabeul & Kélibia, Tunisie<span className="text-blush">.</span>
                 </p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </header>
+
+      {/* CV Modal accessible from Navbar */}
+      <CvModal isOpen={isCvOpen} onClose={() => setIsCvOpen(false)} />
     </>
   );
 };

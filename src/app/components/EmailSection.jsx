@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 const socials = [
   { label: "GitHub", href: "https://github.com/elabenkhedher" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ela-ben-khedher-949a26239/" },
+  { label: "CV (PDF)", href: "/cv-ela-ben-khedher.pdf", download: true },
 ];
 
 const EmailSection = () => {
@@ -40,11 +41,11 @@ const EmailSection = () => {
           typeof resData.error === "object"
             ? resData.error.message || JSON.stringify(resData.error)
             : resData.error;
-        alert(`Error sending message: ${errorMsg || "Unknown error"}`);
+        alert(`Erreur lors de l'envoi du message : ${errorMsg || "Erreur inconnue"}`);
       }
     } catch (error) {
       console.error("Submit error:", error);
-      alert("Failed to send message. Please try again.");
+      alert("Échec de l'envoi du message. Veuillez réessayer.");
     } finally {
       setIsSending(false);
     }
@@ -66,7 +67,7 @@ const EmailSection = () => {
       >
         <div className="mb-12 flex items-baseline gap-4">
           <span className="font-mono text-xs text-blush">03</span>
-          <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-medium tracking-tight text-paper sm:text-4xl">
             Contact{" "}
             <span className="text-blush" aria-hidden="true">
               ♡
@@ -77,19 +78,31 @@ const EmailSection = () => {
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h3 className="text-2xl font-medium leading-snug tracking-tight text-paper sm:text-3xl">
-              Have a project in mind? Or just want to say hi?
+              Vous avez un projet en tête ? Une opportunité de stage PFE ?
             </h3>
             <p className="mt-5 max-w-md leading-relaxed text-paper-dim">
-              The form on the right goes straight to my inbox. If you prefer
-              email, write to me directly and I will get back to you, usually
-              within a day or two.
+              À la recherche d&apos;un stage de fin d&apos;études (PFE) dès février 2027 ou ouverte à des collaborations techniques.
+              Contactez-moi directement par email ou par téléphone, je vous réponds avec plaisir sous 24 à 48 heures.
             </p>
-            <a
-              href="mailto:elabenkedher@gmail.com"
-              className="mt-6 inline-flex min-h-[44px] items-center border-b border-line-strong pb-1 text-lg text-paper transition-colors hover:border-blush hover:text-blush focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
-            >
-              elabenkedher@gmail.com
-            </a>
+
+            <div className="mt-6 flex flex-col gap-2">
+              <a
+                href="mailto:elabenkedher@gmail.com"
+                className="inline-flex min-h-[44px] items-center text-lg text-paper transition-colors hover:text-blush focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
+              >
+                ✉️ elabenkedher@gmail.com
+              </a>
+              <a
+                href="tel:+21696079666"
+                className="inline-flex min-h-[44px] items-center text-base text-paper-dim transition-colors hover:text-blush focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
+              >
+                📞 +216 96 079 666
+              </a>
+              <p className="font-mono text-xs text-paper-faint">
+                📍 Nabeul & Kélibia, Tunisie
+              </p>
+            </div>
+
             <div className="mt-10 flex flex-wrap gap-6">
               {socials.map((social) => (
                 <a
@@ -97,6 +110,7 @@ const EmailSection = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  download={social.download ? "CV_Ela_Ben_Khedher.pdf" : undefined}
                   className="inline-flex min-h-[44px] items-center font-mono text-xs uppercase tracking-widest text-paper-dim transition-colors hover:text-paper focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
                 >
                   {social.label} <span aria-hidden="true" className="ml-1">↗</span>
@@ -108,10 +122,9 @@ const EmailSection = () => {
           <div className="lg:col-span-7">
             {emailSubmitted ? (
               <div className="rounded-xl border border-line bg-ink-raised p-8">
-                <p className="font-medium text-paper">Message sent ✨</p>
+                <p className="font-medium text-paper">Message envoyé ✨</p>
                 <p className="mt-2 text-sm text-paper-dim">
-                  Thanks for reaching out, I will reply as soon as I can. Talk
-                  soon!
+                  Merci pour votre message ! Je vous répondrai dans les plus brefs délais. À très vite !
                 </p>
               </div>
             ) : (
@@ -121,14 +134,14 @@ const EmailSection = () => {
                     htmlFor="email"
                     className="mb-1 block font-mono text-xs uppercase tracking-widest text-paper-faint"
                   >
-                    Your email
+                    Votre adresse email
                   </label>
                   <input
                     name="email"
                     type="email"
                     id="email"
                     required
-                    placeholder="you@example.com"
+                    placeholder="nom@exemple.com"
                     className={fieldClasses}
                   />
                 </div>
@@ -137,14 +150,14 @@ const EmailSection = () => {
                     htmlFor="subject"
                     className="mb-1 block font-mono text-xs uppercase tracking-widest text-paper-faint"
                   >
-                    Subject
+                    Objet du message
                   </label>
                   <input
                     name="subject"
                     type="text"
                     id="subject"
                     required
-                    placeholder="What is this about"
+                    placeholder="Opportunité de stage PFE, échange technique..."
                     className={fieldClasses}
                   />
                 </div>
@@ -159,7 +172,7 @@ const EmailSection = () => {
                     name="message"
                     id="message"
                     rows={5}
-                    placeholder="A few lines about the project, timeline, anything useful"
+                    placeholder="Détails du projet, opportunité de stage PFE, équipe, etc."
                     className={`${fieldClasses} resize-none`}
                   />
                 </div>
@@ -168,7 +181,7 @@ const EmailSection = () => {
                   disabled={isSending}
                   className="inline-flex min-h-[44px] self-start items-center rounded-lg bg-blush px-6 py-3 text-sm font-medium text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-blush-soft hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-blush disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {isSending ? "Sending..." : "Send message ♡"}
+                  {isSending ? "Envoi en cours..." : "Envoyer le message ♡"}
                 </button>
               </form>
             )}

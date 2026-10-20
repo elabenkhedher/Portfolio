@@ -63,7 +63,7 @@ export const projectsData = [
     subtitle: "Plateforme interactive d'évaluation",
     categoryBadge: "Projet Web Dynamique",
     categories: ["web"],
-    // TODO: Ela, feel free to refine the description and key features below to match any new updates to QuizMaster.
+    // TODO: Ela, n'hésite pas à ajuster la description et les fonctionnalités selon tes souhaits.
     description:
       "Plateforme web dynamique d'évaluation interactive proposant des séries de quiz par palier de difficulté (Débutant, Intermédiaire, Avancé) avec scoring en temps réel, progression par paliers et compte rendu détaillé.",
     longDescription:
@@ -87,7 +87,7 @@ export const projectsData = [
     categoryBadge: "Plateforme Santé",
     categories: ["web"],
     description:
-      "MediCare Hub is a healthcare management app built with Next.js, TypeScript, and Tailwind CSS, featuring role-based portals for Doctors, Secretaries, and Patients to manage appointments, medical records, and digital prescriptions.",
+      "Application de gestion de cabinet médical avec portails dédiés pour médecins, secrétaires et patients : prise de rendez-vous, dossiers médicaux sécurisés et ordonnances numériques.",
     longDescription:
       "Système d'information hospitalier et de gestion de cabinet médical moderne. L'application offre une séparation stricte des privilèges avec des espaces sur mesure pour le personnel soignant, l'accueil et les patients. Elle dématérialise les ordonnances, sécurise les dossiers médicaux et optimise la prise de rendez-vous en ligne.",
     features: [
@@ -109,7 +109,7 @@ export const projectsData = [
     categoryBadge: "Fintech Municipale",
     categories: ["web"],
     description:
-      "Digital municipal payment and revenue collection platform built with Symfony 7 to simplify taxpayer obligations and administrative tracking.",
+      "Plateforme municipale de télépaiement et de recouvrement fiscal développée avec Symfony 7 pour simplifier les démarches citoyennes et le suivi administratif.",
     longDescription:
       "Plateforme moderne de gestion fiscale et de paiement en ligne pour les collectivités locales. KbadhaPay fluidifie les rentrées municipales, permet aux contribuables de consulter et régler leurs avis d'imposition en toute sécurité, et fournit aux agents territoriaux des outils d'audit et de conciliation comptable fiables.",
     features: [
@@ -131,7 +131,7 @@ export const projectsData = [
     categoryBadge: "Productivité & Deep Work",
     categories: ["web"],
     description:
-      "A visual Pomodoro timer and task manager built for deep work with audio notifications and customizable focus intervals.",
+      "Minuteur Pomodoro épuré et gestionnaire de tâches conçu pour le travail en profondeur, avec notifications sonores et intervalles de concentration sur mesure.",
     longDescription:
       "Application de productivité épurée intégrant la méthode Pomodoro pour les développeurs et créatifs. Elle combine des minuteries d'intervalles personnalisables, des alertes discrètes et une to-do list connectée pour structurer les sessions de travail profond sans interruption.",
     features: [
@@ -153,7 +153,7 @@ export const projectsData = [
     categoryBadge: "Mobilité Universitaire",
     categories: ["web", "mobile"],
     description:
-      "CovoISET is a Tunisian carpooling platform connecting drivers and passengers to share inter-city rides, book seats, and track routes in real time.",
+      "Plateforme collaborative de covoiturage pour la communauté universitaire reliant conducteurs et passagers avec réservation de trajets et suivi d'itinéraires en temps réel.",
     longDescription:
       "Solution collaborative de covoiturage conçue pour la communauté universitaire de l'ISET. Elle met en relation les étudiants et enseignants motorisés avec les usagers réguliers sur les trajets inter-villes, réduit l'empreinte carbone et allège les coûts de transport quotidien.",
     features: [
