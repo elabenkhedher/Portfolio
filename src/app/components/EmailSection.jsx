@@ -36,7 +36,10 @@ const EmailSection = () => {
       if (response.ok && !resData.error) {
         setEmailSubmitted(true);
       } else {
-        const errorMsg = typeof resData.error === "object" ? (resData.error.message || JSON.stringify(resData.error)) : resData.error;
+        const errorMsg =
+          typeof resData.error === "object"
+            ? resData.error.message || JSON.stringify(resData.error)
+            : resData.error;
         alert(`Error sending message: ${errorMsg || "Unknown error"}`);
       }
     } catch (error) {
@@ -48,7 +51,7 @@ const EmailSection = () => {
   };
 
   const fieldClasses =
-    "w-full border-b border-line bg-transparent py-3 text-sm text-paper placeholder:text-paper-faint focus:outline-none focus:border-paper transition-colors";
+    "w-full border-b border-line bg-transparent py-3 text-sm text-paper placeholder:text-paper-faint focus:outline-none focus:border-blush focus:ring-0 transition-colors";
 
   return (
     <section
@@ -73,7 +76,7 @@ const EmailSection = () => {
 
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h3 className="text-2xl font-medium leading-snug tracking-tight sm:text-3xl">
+            <h3 className="text-2xl font-medium leading-snug tracking-tight text-paper sm:text-3xl">
               Have a project in mind? Or just want to say hi?
             </h3>
             <p className="mt-5 max-w-md leading-relaxed text-paper-dim">
@@ -83,20 +86,20 @@ const EmailSection = () => {
             </p>
             <a
               href="mailto:elabenkedher@gmail.com"
-              className="mt-6 inline-block border-b border-line-strong pb-1 text-lg text-paper transition-colors hover:border-blush hover:text-blush"
+              className="mt-6 inline-flex min-h-[44px] items-center border-b border-line-strong pb-1 text-lg text-paper transition-colors hover:border-blush hover:text-blush focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
             >
               elabenkedher@gmail.com
             </a>
-            <div className="mt-10 flex gap-6">
+            <div className="mt-10 flex flex-wrap gap-6">
               {socials.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs uppercase tracking-widest text-paper-dim transition-colors hover:text-paper"
+                  className="inline-flex min-h-[44px] items-center font-mono text-xs uppercase tracking-widest text-paper-dim transition-colors hover:text-paper focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
                 >
-                  {social.label} <span aria-hidden="true">↗</span>
+                  {social.label} <span aria-hidden="true" className="ml-1">↗</span>
                 </a>
               ))}
             </div>
@@ -104,8 +107,8 @@ const EmailSection = () => {
 
           <div className="lg:col-span-7">
             {emailSubmitted ? (
-              <div className="border border-line p-8">
-                <p className="font-medium">Message sent ✨</p>
+              <div className="rounded-xl border border-line bg-ink-raised p-8">
+                <p className="font-medium text-paper">Message sent ✨</p>
                 <p className="mt-2 text-sm text-paper-dim">
                   Thanks for reaching out, I will reply as soon as I can. Talk
                   soon!
@@ -163,7 +166,7 @@ const EmailSection = () => {
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="self-start bg-blush px-6 py-3 text-sm font-medium text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-blush-soft hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex min-h-[44px] self-start items-center rounded-lg bg-blush px-6 py-3 text-sm font-medium text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-blush-soft hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-blush disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {isSending ? "Sending..." : "Send message ♡"}
                 </button>

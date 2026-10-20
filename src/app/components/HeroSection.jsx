@@ -1,10 +1,26 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const roles = [
+  "Full-stack developer",
+  "React & Next.js engineer",
+  "Python & Django builder",
+  "Java & Desktop developer",
+];
 
 const HeroSection = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="border-b border-line pb-20 pt-28 md:pb-28 md:pt-40">
       <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12">
@@ -14,19 +30,35 @@ const HeroSection = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="lg:col-span-8"
         >
-          <p className="mb-6 flex items-center gap-2.5 font-mono text-xs uppercase tracking-widest text-paper-dim">
+          <div className="mb-6 flex flex-wrap items-center gap-2.5 font-mono text-xs uppercase tracking-widest text-paper-dim">
             <span
-              className="h-1.5 w-1.5 animate-pulse rounded-full bg-blush"
+              className="h-2 w-2 animate-pulse rounded-full bg-blush"
               aria-hidden="true"
             />
-            Full-stack developer · Kelibia, Tunisia
+            <div className="h-5 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roleIndex}
+                  initial={{ y: 14, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -14, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="inline-block text-blush"
+                >
+                  {roles[roleIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+            <span className="text-paper-faint">· Kelibia, Tunisia</span>
             <span className="text-blush" aria-hidden="true">
               ✿
             </span>
-          </p>
-          <h1 className="max-w-3xl text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+          </div>
+
+          <h1 className="max-w-3xl text-4xl font-medium leading-[1.1] tracking-tight text-paper sm:text-5xl lg:text-6xl">
             I build web applications from the database to the last pixel.
           </h1>
+
           <p className="mt-6 max-w-xl text-base leading-relaxed text-paper-dim sm:text-lg">
             My name is Elaa{" "}
             <span
@@ -39,16 +71,17 @@ const HeroSection = () => {
             software that is solid, readable and actually finished. Right now I
             am open to freelance and full-time work.
           </p>
+
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href="/#work"
-              className="bg-blush px-6 py-3 text-sm font-medium text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-blush-soft hover:shadow-glow"
+              className="inline-flex min-h-[44px] items-center rounded-lg bg-blush px-6 py-3 text-sm font-medium text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-blush-soft hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
             >
               View my work ✧
             </Link>
             <Link
               href="/#contact"
-              className="border border-line-strong px-6 py-3 text-sm font-medium text-paper-dim transition-all duration-200 hover:-translate-y-0.5 hover:border-blush hover:text-blush"
+              className="inline-flex min-h-[44px] items-center rounded-lg border border-line-strong px-6 py-3 text-sm font-medium text-paper-dim transition-all duration-200 hover:-translate-y-0.5 hover:border-blush hover:text-blush focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
             >
               Get in touch ♡
             </Link>
@@ -86,14 +119,16 @@ const HeroSection = () => {
             >
               ✿
             </span>
-            <Image
-              src="/images/hero-image.png"
-              alt="Portrait of Elaa"
-              width={400}
-              height={400}
-              priority
-              className="h-auto w-full"
-            />
+            <div className="overflow-hidden rounded-2xl border border-line bg-ink-raised shadow-card transition-transform duration-300 hover:scale-[1.02]">
+              <Image
+                src="/images/hero-image.png"
+                alt="Portrait of Elaa"
+                width={400}
+                height={400}
+                priority
+                className="h-auto w-full object-cover"
+              />
+            </div>
             <p className="mt-3 font-mono text-[11px] uppercase tracking-widest text-blush-deep">
               Fig. 01 — hi, that&apos;s me ♡
             </p>

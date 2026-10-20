@@ -1,31 +1,42 @@
 /** @type {import('tailwindcss').Config} */
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgb(var(${variableName}) / ${opacityValue})`;
+    }
+    return `rgb(var(${variableName}))`;
+  };
+}
+
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/data/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#120f13",
-          raised: "#1a151d",
-          hover: "#221a25",
+          DEFAULT: withOpacity("--bg-ink"),
+          raised: withOpacity("--bg-ink-raised"),
+          hover: withOpacity("--bg-ink-hover"),
         },
         paper: {
-          DEFAULT: "#efe9ed",
-          dim: "#a89aa5",
-          faint: "#776b75",
+          DEFAULT: withOpacity("--color-paper"),
+          dim: withOpacity("--color-paper-dim"),
+          faint: withOpacity("--color-paper-faint"),
         },
         line: {
-          DEFAULT: "#2c2430",
-          strong: "#46394d",
+          DEFAULT: withOpacity("--color-line"),
+          strong: withOpacity("--color-line-strong"),
         },
         blush: {
-          DEFAULT: "#f2a7c6",
-          soft: "#f7c9db",
-          deep: "#d97ba6",
+          DEFAULT: withOpacity("--color-blush"),
+          soft: withOpacity("--color-blush-soft"),
+          deep: withOpacity("--color-blush-deep"),
         },
       },
       fontFamily: {
@@ -45,6 +56,8 @@ module.exports = {
       boxShadow: {
         glow: "0 0 24px rgba(242, 167, 198, 0.35)",
         "glow-lg": "0 8px 40px rgba(242, 167, 198, 0.35)",
+        card: "0 10px 30px -10px rgba(0, 0, 0, 0.3)",
+        "card-hover": "0 20px 40px -15px rgba(242, 167, 198, 0.22)",
       },
       keyframes: {
         wave: {

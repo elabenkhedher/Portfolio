@@ -1,8 +1,16 @@
+"use client";
 import React from "react";
-import Link from "next/link";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <footer className="py-8">
@@ -14,12 +22,13 @@ const Footer = () => {
           </span>{" "}
           and an unreasonable amount of pink.
         </p>
-        <Link
+        <a
           href="#top"
-          className="font-mono text-xs uppercase tracking-widest text-paper-faint transition-colors hover:text-blush"
+          onClick={scrollToTop}
+          className="inline-flex min-h-[44px] items-center font-mono text-xs uppercase tracking-widest text-paper-faint transition-colors hover:text-blush focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
         >
           Back to top ↑
-        </Link>
+        </a>
       </div>
     </footer>
   );

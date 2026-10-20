@@ -2,9 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Dark mode default (original palette) */
+  --bg-ink: 18 15 19;
+  --bg-ink-raised: 26 21 29;
+  --bg-ink-hover: 34 26 37;
+  --color-paper: 239 233 237;
+  --color-paper-dim: 168 154 165;
+  --color-paper-faint: 119 107 117;
+  --color-line: 44 36 48;
+  --color-line-strong: 70 57 77;
+  --color-blush: 242 167 198;
+  --color-blush-soft: 247 201 219;
+  --color-blush-deep: 217 123 166;
+}
+
+html.light {
+  /* Light mode (refined editorial soft cream & rose) */
+  --bg-ink: 250 247 249;
+  --bg-ink-raised: 255 255 255;
+  --bg-ink-hover: 243 236 241;
+  --color-paper: 24 18 25;
+  --color-paper-dim: 75 62 73;
+  --color-paper-faint: 120 106 118;
+  --color-line: 230 220 228;
+  --color-line-strong: 202 188 199;
+  --color-blush: 196 66 119;
+  --color-blush-soft: 218 95 145;
+  --color-blush-deep: 163 45 94;
+}
+
 html {
   scroll-behavior: smooth;
-  scrollbar-color: #46394d #120f13;
+  scrollbar-color: rgb(var(--color-line-strong)) rgb(var(--bg-ink));
 }
 
 ::-webkit-scrollbar {
@@ -12,35 +42,45 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #120f13;
+  background: rgb(var(--bg-ink));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #46394d;
+  background: rgb(var(--color-line-strong));
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d97ba6;
+  background: rgb(var(--color-blush-deep));
 }
 
 body {
-  background-color: #120f13;
-  color: #efe9ed;
+  background-color: rgb(var(--bg-ink));
+  color: rgb(var(--color-paper));
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 ::selection {
-  background-color: #f2a7c6;
+  background-color: rgb(var(--color-blush));
   color: #120f13;
 }
 
 :focus-visible {
-  outline: 1px solid #f2a7c6;
+  outline: 2px solid rgb(var(--color-blush));
   outline-offset: 3px;
 }
 
+/* Accessible touch targets for buttons and standalone interactive links */
+button,
+nav a,
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -49,6 +89,8 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
